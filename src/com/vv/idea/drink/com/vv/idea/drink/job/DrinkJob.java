@@ -24,9 +24,9 @@ public class DrinkJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
         String yourName = PropertiesHandler.getAppProp().getValue(YOUR_NAME);
-        //因为构造器要在2021.3移除，我在源码中发现了这个api，传递参数参考的源码的。
-        NotificationGroup notificationGroup = NotificationGroup.create("drink_id", NotificationDisplayType.BALLOON,
-                false, null, null, "24", null);
+        //构造器要在2021.3移除
+        NotificationGroup notificationGroup =
+                new NotificationGroup("drink_id", NotificationDisplayType.BALLOON, false);
         //通知
         String message = (StringUtils.isBlank(yourName) ? DEFAULT_MESSAGE[0] : yourName) + " , " + DEFAULT_MESSAGE[1];
         Notification notification = notificationGroup.createNotification(message, MessageType.INFO);
