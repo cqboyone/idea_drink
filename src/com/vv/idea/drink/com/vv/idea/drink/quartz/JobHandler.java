@@ -12,6 +12,8 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
 
+import java.util.Date;
+
 public class JobHandler {
 
     private static final String TRIGGER_IDENTITY = "trigger";
@@ -102,6 +104,10 @@ public class JobHandler {
     }
 
     public void schedulerJob(QuartzJob job) throws Exception {
+        //任务启动时间
+        if (job.getStartDate() == null) {
+            job.setStartDate(new Date());
+        }
         //构建job信息
         Class cls = Class.forName(job.getJobClassName());
         // cls.newInstance(); // 检验类是否存在
@@ -128,7 +134,7 @@ public class JobHandler {
         }
         Trigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity(TRIGGER_IDENTITY + job.getJobName(), job.getJobGroup())
-                .startNow()
+                .startAt(job.getStartDate())
                 .withSchedule(scheduleBuilder)
                 .build();
         //交由Scheduler安排触发

@@ -1,6 +1,7 @@
 package com.vv.idea.drink.com.vv.idea.drink.quartz;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 public class QuartzJob implements Serializable {
@@ -20,6 +21,11 @@ public class QuartzJob implements Serializable {
      * 执行类，如：com.vv.quartz.job.SendMsgJob
      */
     private String jobClassName;
+
+    /**
+     * 任务启动时间，若为空，立即执行
+     */
+    private Date startDate;
 
     /**
      * cron表达式
@@ -121,5 +127,13 @@ public class QuartzJob implements Serializable {
 
     public void setRepeatCount(Integer repeatCount) {
         this.repeatCount = repeatCount;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 }

@@ -1,8 +1,11 @@
 package com.vv.idea.drink.com.vv.idea.drink.action;
 
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.ui.Messages;
+import com.vv.idea.drink.com.vv.idea.drink.handler.PropertiesHandler;
+
+import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.YOUR_NAME;
 
 /**
  * @description:
@@ -11,16 +14,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
  */
 public class DrinkAction extends AnAction {
 
-    public static final String DRINK_INTERVAL = "drink_interval";
-
     @Override
     public void actionPerformed(AnActionEvent e) {
-
-
-        //获取 application 级别的 PropertiesComponent
-        PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
-        propertiesComponent.setValue(DRINK_INTERVAL, "10");
-        System.out.println(propertiesComponent.getValue(DRINK_INTERVAL));
-
+        String showInputDialog = Messages.showInputDialog("请输入您的昵称", "drink setting", null);
+        PropertiesHandler.getAppProp().setValue(YOUR_NAME, showInputDialog);
     }
 }
