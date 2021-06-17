@@ -38,6 +38,13 @@
                     class="com.vv.idea.drink.com.vv.idea.drink.action.SetFrequencyAction"
                     text="set frequency" description="设置提醒频率">
             </action>
+            <action id="com.vv.idea.drink.com.vv.idea.drink.action.StopDrinkAction"
+                    class="com.vv.idea.drink.com.vv.idea.drink.action.StopDrinkAction"
+                    text="stop drink" description="停止喝水">
+            </action>
+            <action id="com.vv.idea.drink.com.vv.idea.drink.action.StartDrinkAction"
+                    class="com.vv.idea.drink.com.vv.idea.drink.action.StartDrinkAction"
+                    text="start drink" description="开始喝水"/>
         </group>
     </actions>
 

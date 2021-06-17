@@ -5,6 +5,9 @@ import com.vv.idea.drink.com.vv.idea.drink.quartz.JobHandler;
 import com.vv.idea.drink.com.vv.idea.drink.quartz.QuartzJob;
 
 import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_INTERVAL_SECONDS;
+import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_JOB_DESCRIPTION;
+import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_JOB_GROUP;
+import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_JOB_NAME;
 
 /**
  * @description:
@@ -17,9 +20,9 @@ public class JobBuilder {
         Integer value = PropertiesHandler.getAppProp().getInt(DRINK_INTERVAL_SECONDS, 60 * 30);
         QuartzJob quartzJob = new QuartzJob();
         quartzJob.setMode(JobHandler.Mode.INTERVAL.type);
-        quartzJob.setJobName("jobName");
-        quartzJob.setJobGroup("group");
-        quartzJob.setDescription("喝水任务");
+        quartzJob.setJobName(DRINK_JOB_NAME);
+        quartzJob.setJobGroup(DRINK_JOB_GROUP);
+        quartzJob.setDescription(DRINK_JOB_DESCRIPTION);
         quartzJob.setInterval(value);
         quartzJob.setJobClassName("com.vv.idea.drink.com.vv.idea.drink.job.DrinkJob");
         return quartzJob;

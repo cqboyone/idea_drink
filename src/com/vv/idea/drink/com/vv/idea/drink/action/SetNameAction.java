@@ -16,7 +16,7 @@ public class SetNameAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        String showInputDialog = Messages.showInputDialog("请输入您的昵称", "drink setting", null);
+        String showInputDialog = Messages.showInputDialog("请输入您的昵称", "Drink Setting", null);
         PropertiesHandler.getAppProp().setValue(YOUR_NAME, showInputDialog);
     }
 }
