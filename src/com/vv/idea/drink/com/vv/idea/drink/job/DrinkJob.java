@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 
+import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.LAST_EXECUTE_TIME;
 import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.YOUR_NAME;
 
 /**
@@ -29,6 +30,8 @@ public class DrinkJob implements Job {
         String message = (StringUtils.isBlank(yourName) ? "主人" : yourName) + "，该喝水啦";
         Notification notification = notificationGroup.createNotification(message, MessageType.INFO);
         Notifications.Bus.notify(notification);
+        //记录执行任务的时间
+        PropertiesHandler.getAppProp().setValue(LAST_EXECUTE_TIME, System.currentTimeMillis() + "");
     }
 
 }

@@ -1,0 +1,50 @@
+<idea-plugin>
+    <id>com.vv.idea.drink</id>
+    <name>idea drink</name>
+    <version>1.0</version>
+    <vendor email="cqboyone@163.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+        Enter short description for your plugin here.<br>
+        <em>most HTML tags may be used</em>
+        ]]></description>
+
+    <change-notes><![CDATA[
+        Add change notes here.<br>
+        <em>most HTML tags may be used</em>
+        ]]>
+    </change-notes>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- 添加成组的action -->
+        <group id="com.vv.idea.drink.com.vv.idea.drink.setting" text="drink settings"
+               description="drink watter settings" popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <action id="com.vv.idea.drink.com.vv.idea.drink.action.SetNameAction"
+                    class="com.vv.idea.drink.com.vv.idea.drink.action.SetNameAction"
+                    text="set nickname" description="设置昵称"/>
+            <action id="com.vv.idea.drink.com.vv.idea.drink.action.SetFrequencyAction"
+                    class="com.vv.idea.drink.com.vv.idea.drink.action.SetFrequencyAction"
+                    text="set frequency" description="设置提醒频率">
+            </action>
+        </group>
+    </actions>
+
+    <project-components>
+        <component>
+            <implementation-class>com.vv.idea.drink.com.vv.idea.drink.component.MyProductComponent
+            </implementation-class>
+        </component>
+    </project-components>
+</idea-plugin>

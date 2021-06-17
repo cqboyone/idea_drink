@@ -9,5 +9,7 @@ public class Constants {
 
     public static final String YOUR_NAME = "idea.drink.your.name";
 
-    public static final String DRINK_INTERVAL = "idea.drink.interval";
+    public static final String DRINK_INTERVAL_SECONDS = "idea.drink.interval.seconds";
+
+    public static final String LAST_EXECUTE_TIME = "idea.drink.last.executeTime";
 }
