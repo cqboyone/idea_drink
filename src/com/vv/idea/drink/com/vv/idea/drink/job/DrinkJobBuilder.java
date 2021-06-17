@@ -14,7 +14,7 @@ import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_JOB_N
  * @creator zhangwei73
  * @date 2021/6/17 13:13
  */
-public class JobBuilder {
+public class DrinkJobBuilder {
 
     public static QuartzJob getDefault() {
         Integer value = PropertiesHandler.getAppProp().getInt(DRINK_INTERVAL_SECONDS, 60 * 30);

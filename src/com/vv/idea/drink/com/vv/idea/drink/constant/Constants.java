@@ -17,4 +17,7 @@ public class Constants {
     public static final String DRINK_INTERVAL_SECONDS = "idea.drink.interval.seconds";
     public static final String LAST_EXECUTE_TIME = "idea.drink.last.executeTime";
     public static final String DRINK_JOB_STATUS = "idea.drink.status";
+
+    //消息提醒
+    public static final String[] DEFAULT_MESSAGE = {"主人", "该喝水啦"};
 }

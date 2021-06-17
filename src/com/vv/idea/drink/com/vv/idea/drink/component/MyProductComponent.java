@@ -4,14 +4,15 @@ import com.intellij.openapi.components.ProjectComponent;
 import com.vv.idea.drink.com.vv.idea.drink.constant.MyCache;
 import com.vv.idea.drink.com.vv.idea.drink.enums.Enums;
 import com.vv.idea.drink.com.vv.idea.drink.handler.PropertiesHandler;
-import com.vv.idea.drink.com.vv.idea.drink.job.JobBuilder;
+import com.vv.idea.drink.com.vv.idea.drink.job.DrinkJobHandler;
 import com.vv.idea.drink.com.vv.idea.drink.quartz.JobHandler;
-import com.vv.idea.drink.com.vv.idea.drink.quartz.QuartzJob;
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.impl.StdSchedulerFactory;
 
+import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_JOB_GROUP;
+import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_JOB_NAME;
 import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_JOB_STATUS;
 
 /**
@@ -28,13 +29,13 @@ public class MyProductComponent implements ProjectComponent {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
             scheduler.start();
             MyCache.scheduler = scheduler;
-            QuartzJob quartzJob = JobBuilder.getDefault();
+            //开始处理任务
             JobHandler jobHandler = new JobHandler(scheduler);
-            jobHandler.saveJob(quartzJob);
+            jobHandler.saveJob(DrinkJobHandler.buildSafetyDrinkJob());
             //获取idea存储的任务执行状态
             String status = PropertiesHandler.getAppProp().getValue(DRINK_JOB_STATUS);
             if (StringUtils.isNotBlank(status) && !Enums.JOB_STATUS.RUNNING.type.equals(status)) {
-                jobHandler.pauseJob(quartzJob.getJobName(), quartzJob.getJobGroup());
+                jobHandler.pauseJob(DRINK_JOB_NAME, DRINK_JOB_GROUP);
                 return;
             }
             PropertiesHandler.getAppProp().setValue(DRINK_JOB_STATUS, Enums.JOB_STATUS.RUNNING.type);

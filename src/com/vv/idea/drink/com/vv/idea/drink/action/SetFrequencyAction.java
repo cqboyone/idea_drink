@@ -3,16 +3,10 @@ package com.vv.idea.drink.com.vv.idea.drink.action;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.ui.Messages;
-import com.vv.idea.drink.com.vv.idea.drink.constant.MyCache;
 import com.vv.idea.drink.com.vv.idea.drink.handler.PropertiesHandler;
-import com.vv.idea.drink.com.vv.idea.drink.job.JobBuilder;
-import com.vv.idea.drink.com.vv.idea.drink.quartz.JobHandler;
-import com.vv.idea.drink.com.vv.idea.drink.quartz.QuartzJob;
-
-import java.util.Date;
 
 import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_INTERVAL_SECONDS;
-import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.LAST_EXECUTE_TIME;
+import static com.vv.idea.drink.com.vv.idea.drink.job.DrinkJobHandler.safetyUpdateJob;
 
 /**
  * @description:
@@ -31,22 +25,7 @@ public class SetFrequencyAction extends AnAction {
         newInterval *= 60;
         //存储频率
         PropertiesHandler.getAppProp().setValue(DRINK_INTERVAL_SECONDS, newInterval, 0);
-        QuartzJob quartzJob = JobBuilder.getDefault();
-        //获取上次执行时间
-        String lastExecuteTime = PropertiesHandler.getAppProp().getValue(LAST_EXECUTE_TIME);
-        Long last = Long.valueOf(lastExecuteTime);
-        Long now = System.currentTimeMillis();
-        //距上次过了多少毫秒
-        long l = now - last;
-        //如果新的间隔小于间隔,立刻开始任务
-        if (newInterval * 1000 <= l) {
-            quartzJob.setStartDate(new Date(now));
-        } else {
-            //如果新的间隔大于间隔,延迟生效
-            long delay = newInterval * 1000 - l;
-            quartzJob.setStartDate(new Date(now + delay));
-        }
-        new JobHandler(MyCache.scheduler).updateJob(quartzJob);
+        safetyUpdateJob(newInterval);
     }
 
     public Integer showInputDialog() {
