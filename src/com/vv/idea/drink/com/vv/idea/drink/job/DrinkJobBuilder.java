@@ -11,7 +11,7 @@ import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.DRINK_JOB_N
 
 /**
  * @description:
- * @creator zhangwei73
+ * @creator vv
  * @date 2021/6/17 13:13
  */
 public class DrinkJobBuilder {

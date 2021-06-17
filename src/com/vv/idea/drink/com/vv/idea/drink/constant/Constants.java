@@ -2,7 +2,7 @@ package com.vv.idea.drink.com.vv.idea.drink.constant;
 
 /**
  * @description:
- * @creator zhangwei73
+ * @creator vv
  * @date 2021/6/17 9:46
  */
 public class Constants {

@@ -10,7 +10,7 @@ import static com.vv.idea.drink.com.vv.idea.drink.job.DrinkJobHandler.safetyUpda
 
 /**
  * @description:
- * @creator zhangwei73
+ * @creator vv
  * @date 2021/6/17 11:43
  */
 public class SetFrequencyAction extends AnAction {

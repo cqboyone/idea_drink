@@ -4,7 +4,7 @@ import com.intellij.ide.util.PropertiesComponent;
 
 /**
  * @description:
- * @creator zhangwei73
+ * @creator vv
  * @date 2021/6/17 9:39
  */
 public class PropertiesHandler {

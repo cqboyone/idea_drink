@@ -16,7 +16,7 @@ import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.YOUR_NAME;
 
 /**
  * @description:
- * @creator zhangwei73
+ * @creator vv
  * @date 2021/6/11 14:57
  */
 public class DrinkJob implements Job {

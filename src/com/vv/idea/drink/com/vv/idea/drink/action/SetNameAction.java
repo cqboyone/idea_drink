@@ -9,7 +9,7 @@ import static com.vv.idea.drink.com.vv.idea.drink.constant.Constants.YOUR_NAME;
 
 /**
  * @description:
- * @creator zhangwei73
+ * @creator vv
  * @date 2021/6/11 13:55
  */
 public class SetNameAction extends AnAction {
