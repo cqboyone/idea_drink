@@ -31,7 +31,7 @@ public class SetFrequencyAction extends AnAction {
     public Integer showInputDialog() {
         try {
             Integer value = PropertiesHandler.getAppProp().getInt(DRINK_INTERVAL_SECONDS, 30 * 60);
-            String frequency = Messages.showInputDialog("How many minutes to remind? \n Please input int 1 to 120! \n Setting will work after one minute!",
+            String frequency = Messages.showInputDialog("How many minutes to remind? \n Please input int 1 to 120!",
                     "Drink Setting", null, value / 60 + "", null);
             Integer integer = Integer.valueOf(frequency);
             if (integer >= 1 && integer <= 120) {
